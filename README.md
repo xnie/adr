@@ -13,19 +13,19 @@ Here we include instructions on how to reproduce results in the paper.
 
 First, make new directories for experiments.
 ```bash
-mkdir results_oracle
 mkdir results
 mkdir plots
 mkdir logs
 ```
-The following two commands start running two bashscripts that write to disk Monte-Carlo evaluated oracle values for all policies specified in a policy class, for the two simulation setups respectively.
+The following two commands start running two bashscripts that write to disk Monte-Carlo evaluated oracle values for all policies specified in a policy class, for the two simulation setups respectively. 
 `start_oracle_1.sh` is a bash script runs the oracle simulations for the multiple-treatment setup specified in the paper, and `start_oracle_2.sh` is a bash script runs the oracle simulations for the binary-treatment setup specified in the paper  
 
 ```bash
 ./start_oracle_1.sh
 ./start_oracle_2.sh
 ```
-Running the above two commands will write to the directory `results_oracle`.
+Running the above two commands will write to the directory `results_oracle`. Note that the results of the runs are included in the folder `results_oracle` so you can skip these two commands if you choose to.
+
 Next run the following two commands to actually start the experiments, which read oracle values from the `results_oracle` directory.
 `results_oracle`
 ```bash

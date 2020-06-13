@@ -1,4 +1,4 @@
-adr_hiv = function(A_time,
+adr = function(A_time,
                    A_choice,
                    lifetime,
                    R,

@@ -45,7 +45,7 @@ if (setup == "simu1") {
   if (cluster) {
     n = as.numeric(args[2])
   } else {
-    n = 10000
+    n = 1000
   }
   n_oracle_eval = 20000
   H=10
@@ -182,7 +182,7 @@ if (run_adr) {
      mu_now = get_est(data_static_normal, data_dynamic[data_dynamic$id %in% normal_idx,,drop=F], foldid[normal_idx], H, regress_type="mu_now", learner=mu_learner, outcome_interest=outcome_interest)
      mu_next_internal = get_est(data_static_normal, data_dynamic[data_dynamic$id %in% normal_idx,,drop=F], foldid[normal_idx], H, regress_type="mu_next_internal", learner=mu_learner, outcome_interest=outcome_interest, e_hat=e_hat_normal)
      d_hat = get_est(data_static_normal, data_dynamic[data_dynamic$id %in% normal_idx,,drop=F], foldid[normal_idx], H, regress_type="d", learner=d_learner, outcome_interest = outcome_interest)
-     mu_next = get_mu_next(data_static_normal, mu_next_internal, d_hat, H, outcome_interest=outcome_interest, mu_combined=F)
+     mu_next = get_mu_next(data_static_normal, mu_next_internal, d_hat, H, outcome_interest=outcome_interest)
      mu_final = get_mu_final(die_idx, live_idx, normal_idx, mu_now, mu_next, mu_next_internal, H)
      mu_now = mu_final$mu_now
      mu_next = mu_final$mu_next
@@ -192,7 +192,7 @@ if (run_adr) {
     mu_now = get_est(data_static, data_dynamic, foldid, H, regress_type="mu_now", learner=mu_learner, outcome_interest=outcome_interest)
     mu_next_internal = get_est(data_static, data_dynamic, foldid, H, regress_type="mu_next_internal", learner=mu_learner, outcome_interest=outcome_interest, e_hat=e_hat)
     d_hat = get_est(data_static, data_dynamic, foldid, H, regress_type="d", learner=d_learner, outcome_interest = outcome_interest)
-    mu_next = get_mu_next(data_static, mu_next_internal, d_hat, H, outcome_interest=outcome_interest, mu_combined=F)
+    mu_next = get_mu_next(data_static, mu_next_internal, d_hat, H, outcome_interest=outcome_interest)
   }
 
   adr_ret= adr(A_time = data_static$treat_start_time,
